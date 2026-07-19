@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import * as Print from 'expo-print';
 import * as Sharing from 'expo-sharing';
 import { MurderMysteryData } from '../types/murder-mystery';
+import { murderMysteryArtifactService } from '../services/murderMysteryArtifactService';
 import { ephemeraPrintService } from '../services/ephemeraPrintService';
 
 interface EphemeraEngineVisualizerProps {

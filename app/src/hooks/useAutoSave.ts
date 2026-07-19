@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV } from 'react-native-mmkv';
 
-const storage = new MMKV();
+const storage = createMMKV();
 
 export function useAutoSave<T>(
   key: string,
@@ -39,7 +39,7 @@ export function useAutoSave<T>(
   }, [data, key, delayMs]);
 
   const clearAutoSave = () => {
-    storage.delete(key);
+    storage.remove(key);
   };
 
   return { clearAutoSave };

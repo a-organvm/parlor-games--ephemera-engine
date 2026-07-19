@@ -1,10 +1,10 @@
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV } from 'react-native-mmkv';
 import NetInfo from '@react-native-community/netinfo';
 import { supabase } from '../../../lib/supabase';
 import { syncQueue } from '../../../lib/offlineSync';
 import { MurderMysteryData, Accusation, Award } from '../types/murder-mystery';
 
-const storage = new MMKV();
+const storage = createMMKV();
 
 export const murderMysterySync = {
   // Pre-cache session config for offline play

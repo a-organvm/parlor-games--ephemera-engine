@@ -1,8 +1,8 @@
 import { supabase } from '../../../lib/supabase';
 import { MurderMysteryData, GameNightState } from '../types/murder-mystery';
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV } from 'react-native-mmkv';
 
-const storage = new MMKV();
+const storage = createMMKV();
 
 export class GameNightService {
   /**

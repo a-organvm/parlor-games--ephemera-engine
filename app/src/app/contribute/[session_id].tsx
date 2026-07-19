@@ -40,12 +40,15 @@ export default function ContributeScreen() {
     try {
       setLoading(true);
       const { data: userData } = await supabase.auth.getUser();
+      if (!userData.user?.id) {
+        throw new Error('You must be signed in to save an email.');
+      }
       
       const { error: updateError } = await supabase
         .from('session_participations')
         .update({ email })
         .eq('session_id', session_id)
-        .eq('user_id', userData.user?.id);
+        .eq('user_id', userData.user.id);
         
       if (updateError) throw updateError;
       setSuccess(true);

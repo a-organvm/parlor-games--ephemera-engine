@@ -33,7 +33,7 @@ export const supabaseStorage = {
       console.error('Error setting item in storage', e);
     }
   },
-  removeItem: (key: string): void => {
+  removeItem: async (key: string): Promise<void> => {
     try {
       if (Platform.OS === 'web') {
         if (typeof localStorage !== 'undefined') {
@@ -41,7 +41,7 @@ export const supabaseStorage = {
         }
         return;
       }
-      SecureStore.deleteItem(key);
+      await SecureStore.deleteItemAsync(key);
     } catch (e) {
       console.error('Error removing item from storage', e);
     }

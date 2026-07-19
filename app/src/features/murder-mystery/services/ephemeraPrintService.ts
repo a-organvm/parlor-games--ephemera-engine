@@ -198,7 +198,7 @@ export const ephemeraPrintService = {
           dialogTitle: 'Share or Save Generated Ephemera'
         });
       } else {
-        Alert.alert('PDF Saved', \`Your file has been saved to: \${uri}\`);
+        Alert.alert('PDF Saved', `Your file has been saved to: ${uri}`);
       }
       return true;
     } catch (error) {
