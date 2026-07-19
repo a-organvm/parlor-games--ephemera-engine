@@ -30,7 +30,7 @@ export const ThreeActDashboardScreen: React.FC<ThreeActDashboardScreenProps> = (
   
   const [showEmergencyOverlay, setShowEmergencyOverlay] = useState(false);
   const [undoToastVisible, setUndoToastVisible] = useState(false);
-  const [undoTimer, setUndoTimer] = useState<NodeJS.Timeout | null>(null);
+  const [undoTimer, setUndoTimer] = useState<ReturnType<typeof setTimeout> | null>(null);
   const [previousAct, setPreviousAct] = useState<number>(0);
 
   const displayAct = currentAct === 0 ? 1 : currentAct;

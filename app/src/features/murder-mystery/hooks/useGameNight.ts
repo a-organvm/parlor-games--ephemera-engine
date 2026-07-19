@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { MurderMysteryData } from '../types/murder-mystery';
 import { GameNightService } from '../services/gameNightService';
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV } from 'react-native-mmkv';
 
-const storage = new MMKV();
+const storage = createMMKV();
 
 export const useGameNight = (sessionId: string, initialScenario: MurderMysteryData) => {
   const [scenario, setScenario] = useState<MurderMysteryData>(initialScenario);

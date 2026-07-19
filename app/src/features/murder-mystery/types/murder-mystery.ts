@@ -71,11 +71,18 @@ export interface Clue {
 }
 
 export interface GameNightState {
+  phase?: 'SETUP' | 'PLAY' | 'ACCUSATION' | 'REVEAL' | 'EPHEMERA';
   act_timestamps: ActTimestamp[];
-  clues_distributed: string[];   // Clue IDs marked as distributed
+  clues_distributed: ClueDistribution[];
   evidence_reveals: EvidenceReveal[];
   accusations: Accusation[];
   award_votes?: AwardVote[];
+}
+
+export interface ClueDistribution {
+  clue_id: string;
+  found_by?: string;
+  found_at: string;
 }
 
 export interface AwardVote {

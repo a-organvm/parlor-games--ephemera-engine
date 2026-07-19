@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Switch, StyleSheet, Alert } from 'react-native';
 import * as Notifications from 'expo-notifications';
 import { supabase } from '../lib/supabase';
-import { useAuthStore } from '../store/authStore';
+import { useAuthStore } from '../stores/auth-store';
 
 export function NotificationPreferences() {
   const { session } = useAuthStore();

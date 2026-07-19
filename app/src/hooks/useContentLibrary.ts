@@ -1,10 +1,10 @@
 import { useState, useCallback, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
 import * as FileSystem from 'expo-file-system';
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV } from 'react-native-mmkv';
 import { ContentPack } from './useContentPacks';
 
-const storage = new MMKV();
+const storage = createMMKV();
 const LIBRARY_KEY = 'local_content_library';
 
 type DownloadedPack = {

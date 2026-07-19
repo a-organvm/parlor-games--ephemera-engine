@@ -6,17 +6,18 @@ export class ArtifactDataAssemblyService {
    * This strips out unnecessary fields and formats the timeline, accusations, and outcome.
    */
   static assembleDossierPayload(sessionId: string, scenario: MurderMysteryData): any {
-    const { title, game_night, crime, characters, theme } = scenario;
+    const { setting_seed, game_night, crime, characters } = scenario;
     
     // Format accusations
     const formattedAccusations = (game_night?.accusations || []).map(acc => {
-      const accuser = characters.find(c => c.id === acc.accuser_id)?.name || 'Unknown';
-      const accused = characters.find(c => c.id === acc.accused_id)?.name || 'Unknown';
+      const accuser = characters.find(c => c.assigned_to === acc.player_id)?.name || 'Unknown';
+      const accused = characters.find(c => c.id === acc.accused_character_id)?.name || 'Unknown';
       return {
         accuser,
         accused,
-        theory: acc.theory,
-        is_correct: acc.accused_id === crime.murderer_id
+        method: acc.method,
+        motive: acc.motive,
+        is_correct: acc.accused_character_id === crime.murderer_id
       };
     });
 
@@ -27,8 +28,8 @@ export class ArtifactDataAssemblyService {
       session_id: sessionId,
       artifact_type: 'mm_dossier',
       data: {
-        title,
-        theme,
+        title: setting_seed.location,
+        theme: setting_seed.era,
         outcome: {
           victim,
           murderer,

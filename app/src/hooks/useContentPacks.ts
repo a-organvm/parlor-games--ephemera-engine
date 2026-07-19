@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
-import { useAuthStore } from '../store/authStore';
+import { useAuthStore } from '../stores/auth-store';
 
 export type ContentPack = {
   id: string;

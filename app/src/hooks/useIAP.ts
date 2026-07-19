@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { Platform } from 'react-native';
 import * as RNIap from 'react-native-iap';
 import { supabase } from '../lib/supabase';
-import { useAuthStore } from '../store/authStore';
+import { useAuthStore } from '../stores/auth-store';
 
 export function useIAP(productIds: string[]) {
   const { session } = useAuthStore();

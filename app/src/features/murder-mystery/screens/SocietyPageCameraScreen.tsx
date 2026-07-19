@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, Alert } from 'react-native';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
-import ViewShot from 'react-native-view-shot';
+import ViewShot, { ViewShotRef } from 'react-native-view-shot';
 
 export interface SocietyPageCameraScreenProps {
   onClose: () => void;
@@ -17,7 +17,7 @@ export const SocietyPageCameraScreen: React.FC<SocietyPageCameraScreenProps> = (
   const [mediaLibraryPermission, requestMediaLibraryPermission] = MediaLibrary.usePermissions();
   const [photo, setPhoto] = useState<string | null>(null);
   const cameraRef = useRef<CameraView>(null);
-  const viewShotRef = useRef<ViewShot>(null);
+  const viewShotRef = useRef<ViewShotRef>(null);
 
   if (!permission) {
     return <View />;
@@ -136,21 +136,21 @@ const styles = StyleSheet.create({
   shutterButton: { width: 70, height: 70, borderRadius: 35, backgroundColor: 'rgba(255, 255, 255, 0.3)', justifyContent: 'center', alignItems: 'center' },
   shutterInner: { width: 54, height: 54, borderRadius: 27, backgroundColor: 'white' },
   compositor: { flex: 1, backgroundColor: '#000' },
-  photo: { ...StyleSheet.absoluteFillObject, resizeMode: 'cover' },
+  photo: { ...StyleSheet.absoluteFill, resizeMode: 'cover' },
   controls: { flexDirection: 'row', justifyContent: 'space-around', padding: 30, backgroundColor: '#111' },
   primaryButton: { backgroundColor: '#4A90E2', padding: 16, borderRadius: 8, flex: 1, marginLeft: 8 },
   secondaryButton: { backgroundColor: '#333', padding: 16, borderRadius: 8, flex: 1, marginRight: 8 },
   secondaryButtonText: { color: 'white', textAlign: 'center', fontWeight: 'bold' },
   
   // Overlays
-  overlay1920: { ...StyleSheet.absoluteFillObject, justifyContent: 'flex-start', padding: 20, backgroundColor: 'rgba(240, 230, 210, 0.2)' },
+  overlay1920: { ...StyleSheet.absoluteFill, justifyContent: 'flex-start', padding: 20, backgroundColor: 'rgba(240, 230, 210, 0.2)' },
   newspaperHeadline: { fontFamily: 'serif', fontSize: 36, fontWeight: '900', color: '#111', textAlign: 'center', textTransform: 'uppercase', textShadowColor: '#FFF', textShadowOffset: { width: 1, height: 1 }, textShadowRadius: 0 },
   newspaperSubhead: { fontFamily: 'serif', fontSize: 18, fontStyle: 'italic', color: '#222', textAlign: 'center', marginTop: 8, textShadowColor: '#FFF', textShadowOffset: { width: 1, height: 1 }, textShadowRadius: 0 },
   
-  overlayVictorian: { ...StyleSheet.absoluteFillObject, justifyContent: 'center', alignItems: 'center' },
-  sepiaTint: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(112, 66, 20, 0.4)' },
-  victorianFrame: { ...StyleSheet.absoluteFillObject, borderWidth: 20, borderColor: '#3b250e', borderStyle: 'solid', opacity: 0.8 },
+  overlayVictorian: { ...StyleSheet.absoluteFill, justifyContent: 'center', alignItems: 'center' },
+  sepiaTint: { ...StyleSheet.absoluteFill, backgroundColor: 'rgba(112, 66, 20, 0.4)' },
+  victorianFrame: { ...StyleSheet.absoluteFill, borderWidth: 20, borderColor: '#3b250e', borderStyle: 'solid', opacity: 0.8 },
   
-  overlayNoir: { ...StyleSheet.absoluteFillObject, borderTopWidth: 40, borderBottomWidth: 40, borderColor: '#000', justifyContent: 'flex-end', padding: 20 },
+  overlayNoir: { ...StyleSheet.absoluteFill, borderTopWidth: 40, borderBottomWidth: 40, borderColor: '#000', justifyContent: 'flex-end', padding: 20 },
   noirText: { color: 'white', fontSize: 24, fontWeight: 'bold', letterSpacing: 4, textAlign: 'right' }
 });
